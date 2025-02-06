@@ -7,17 +7,20 @@ import ServiceSection from './components/ServiceSection';
 import ContactForm from './components/ContactForm';
 import Layout from './components/Layout';
 import 'typeface-montserrat';
-// import FAQSection from './components/FAQSection';
 import FloatingPhoneButton from './components/FloatingPhoneButton'; // Импортируем компонент
-// import AboutSection from './components/AboutSection';
-import OilSpecificationsTable from './components/OilSpecificationsTable';
 import { TranslationProvider } from './TranslationContext';
+
 function App() {
   useEffect(() => {
+    // Инициализация GTM
     const tagManagerArgs = {
-      gtmId: 'AW-16765573978', // Замените на ваш идентификатор GTM
+      gtmId: '', // Замените на ваш идентификатор GTM
     };
     TagManager.initialize(tagManagerArgs);
+    
+    // Изменение заголовка страницы
+    document.title = "metallion.kz"; // Замените на нужный заголовок
+
   }, []); // Эффект будет выполнен только один раз при монтировании компонента
 
   return (
@@ -26,11 +29,8 @@ function App() {
         <Layout>
           <FloatingPhoneButton />
           <HeroSection />
-          {/* <AboutSection /> */}
           <AdvantagesSection />
-          {/* <OilSpecificationsTable /> */}
           <ServiceSection />
-          {/* <FAQSection /> */}
           <ContactForm />
         </Layout>
       </TranslationProvider>
