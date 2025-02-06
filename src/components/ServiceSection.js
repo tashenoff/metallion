@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react'; // Добавлен useContext
+import { TranslationContext } from '../TranslationContext';
 import WhatsAppButton from './WhatsAppButton'; // Импортируем компонент WhatsAppButton
 
 function ServiceSection() {
+    const { polyglot } = useContext(TranslationContext);
     const services = [
         {
             name: "Арматура ",
@@ -45,7 +47,7 @@ function ServiceSection() {
 
             <div className='py-10 '>
                 <div className='container mx-auto'>
-                    <h2 className="text-3xl font-bold text-center mb-6">Наши услуги</h2>
+                    <h2 className="text-3xl font-bold text-center mb-6">  {polyglot.t('our_service')}</h2>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {services.map((service, index) => (
                             <div key={index} className="card bg-opacity-70 backdrop-blur-md bg-base-200 border-base-100 border shadow-md p-4">

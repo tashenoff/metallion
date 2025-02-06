@@ -40,8 +40,8 @@ function Navbar() {
                             tabIndex={0}
                             className="menu menu-sm dropdown-content bg-green-800 rounded-box z-[1] mt-3 w-52 p-2 shadow">
                             <li><a href="#services">{polyglot.t('services')}</a></li>
-                            <li><a href="#adv">{polyglot.t('advantages')}</a></li>
-                            <li><a href="#footer">{polyglot.t('contacts')}</a></li>
+                            <li><a href="#adv">{polyglot.t('advantages_menu')}</a></li>
+                            <li><a href="#footer">{polyglot.t('contacts_menu')}</a></li>
                         </ul>
                     </div>
                     <a href="/" className="">
@@ -51,8 +51,8 @@ function Navbar() {
                 <div className="navbar-center hidden lg:flex justify-start">
                     <ul className="menu menu-horizontal px-1">
                         <li><a href="#services">{polyglot.t('services')}</a></li>
-                        <li><a href="#adv">{polyglot.t('advantages')}</a></li>
-                        <li><a href="#footer">{polyglot.t('contacts')}</a></li>
+                        <li><a href="#adv">{polyglot.t('advantages_menu')}</a></li>
+                        <li><a href="#footer">{polyglot.t('contacts_menu')}</a></li>
                     </ul>
                 </div>
                 <div className='grid grid-cols-2'>
