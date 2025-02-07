@@ -34,7 +34,7 @@ function AdvantagesSection() {
     return (
         <div id="adv" className="py-10 bg-base-100">
             <div className="container mx-auto">
-                <h2 className="text-3xl font-bold text-center mb-6">
+                <h2 className="text-3xl font-bold text-gray-700 text-center mb-6">
                     {polyglot.t("advantages.title")}
                 </h2>
                 <p className="text-center py-5">

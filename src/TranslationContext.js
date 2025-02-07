@@ -5,6 +5,7 @@ import Polyglot from 'node-polyglot';
 // Переводы
 const translations = {
     en: {
+        address: "Қазақстан, Астана қ., Абай көшесі 10/1, 11-нүкте, 2-қабат.",
         services: "Қызметтер",
         our_service: "Біздің қызметтеріміз",
         contacts_menu: "Байланыс",
@@ -35,12 +36,13 @@ const translations = {
             description: 'Болат листтер, металл трубалар сатып алу, металл прокат жеткізу',
         },
         companyName: 'Company Name',
-        address: 'Address',
+        
         bin: 'BIN',
         bankDetails: 'Bank Details',
         currency: 'Currency',
     },
     ru: {
+        address: 'Казахстан г. Астана, Абая 10/1. н.п. 11, 2 этаж',
         services: "Услуги",
         advantages_menu: "Преимущества",
         contacts_menu: "Контакты",
@@ -67,7 +69,7 @@ const translations = {
             description: 'Купить листовой металл и металлические трубы, поставки металлопроката',
         },
         companyName: 'Название компании',
-        address: 'Адрес',
+      
         bin: 'БИН',
         bankDetails: 'Банковские реквизиты',
         currency: 'Валюта',

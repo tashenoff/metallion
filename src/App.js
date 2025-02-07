@@ -5,11 +5,13 @@ import HeroSection from './components/HeroSection';
 import AdvantagesSection from './components/AdvantagesSection';
 import ServiceSection from './components/ServiceSection';
 import ContactForm from './components/ContactForm';
+import FAQSection from './components/FAQSection';
+import AboutSection from './components/AboutSection';
 import Layout from './components/Layout';
 import 'typeface-montserrat';
 import FloatingPhoneButton from './components/FloatingPhoneButton'; // Импортируем компонент
 import { TranslationProvider } from './TranslationContext';
-
+import PriceListAccess from './components/PriceListAccess';
 function App() {
   useEffect(() => {
     // Инициализация GTM
@@ -17,7 +19,7 @@ function App() {
       gtmId: '', // Замените на ваш идентификатор GTM
     };
     TagManager.initialize(tagManagerArgs);
-    
+
     // Изменение заголовка страницы
     document.title = "metallion.kz"; // Замените на нужный заголовок
 
@@ -29,8 +31,11 @@ function App() {
         <Layout>
           <FloatingPhoneButton />
           <HeroSection />
+          <AboutSection />
           <AdvantagesSection />
           <ServiceSection />
+          <PriceListAccess />
+          <FAQSection />
           <ContactForm />
         </Layout>
       </TranslationProvider>

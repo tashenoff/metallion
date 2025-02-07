@@ -4,6 +4,7 @@ import ScrollArrow from './ScrollArrow';
 import PhoneNumber from './PhoneNumber';
 // import CompanyDetails from './CompanyDetails';
 import { TranslationContext } from '../TranslationContext'; // Убедитесь, что путь правильный
+import Contact from './Contact';
 
 const translations = {
     en: {
@@ -27,8 +28,11 @@ function Footer() {
                     direction="top"
                     targetId="services"
                 />
+                 <Contact />
                 <p className="mb-2 text-white">{copyright}</p>
                 <PhoneNumber />
+               
+
             </div>
         </footer>
     );

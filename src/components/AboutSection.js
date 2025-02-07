@@ -1,14 +1,14 @@
 import React, { useContext } from 'react';
-import oilImage from './about/s3.png';
+import oilImage from './about/about.jpeg';
 import { TranslationContext } from '../TranslationContext';
 
-// Объект с переводами
 const translations = {
-  en: {
-    text: 'The trading and logistics company "AIVA.KZ" LLP is a supplier of "AIVA" vegetable oil and other types of edible oils.',
-  },
+
   ru: {
-    text: 'Торгово-логистическая компания ТОО "AIVA.KZ" является поставщиком растительного масла «AIVA», и других видов пищевых масел.',
+    text: 'Компания Metallion — надежный поставщик металлопроката по всему Казахстану. Мы предлагаем широкий ассортимент черного и цветного металла для строительных и производственных нужд. Обеспечиваем качественный сервис, консультации и доставку в кратчайшие сроки. Наши специалисты помогут подобрать нужный материал под ваши задачи.',
+  },
+  en: {
+    text: 'Metallion компаниясы — бүкіл Қазақстан бойынша металлопрокаттың сенімді жеткізушісі. Біз құрылыс және өндірістік қажеттіліктерге арналған қара және түсті металдардың кең ассортиментін ұсынамыз. Жоғары сапалы қызмет, кеңес беру және қысқа мерзімді жеткізуді қамтамасыз етеміз. Біздің мамандар сіздің міндеттеріңізге қажетті материалды таңдауға көмектеседі.',
   },
 };
 
@@ -16,16 +16,19 @@ const AboutSection = () => {
   const { language } = useContext(TranslationContext);
 
   return (
-    <div className="container mx-auto">
-      <div className="grid grid-cols-2">
-        <div>
-          <img src={oilImage} alt="Aiva масло" />
+    <section className=" mx-auto py-4 ">
+      <div className='container'>
+        <div className="grid md:grid-cols-2 gap-8 items-center bg-white shadow-lg rounded-lg p-6">
+          <div className="overflow-hidden rounded-lg">
+            <img src={oilImage} alt="About" className=" rounded-lg" />
+          </div>
+          <div className="text-gray-700">
+            <h2 className="text-3xl font-bold mb-6">{language === 'en' ? 'Біз туралы' : 'О нас'}</h2>
+            <p className=" leading-relaxed">{translations[language].text}</p>
+          </div>
         </div>
-        <p className="p-5">
-          {translations[language].text}
-        </p>
       </div>
-    </div>
+    </section>
   );
 };
 

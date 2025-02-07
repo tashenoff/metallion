@@ -1,49 +1,80 @@
-// src/components/FAQSection.js
-import React from 'react';
+import React, { useContext } from 'react';
+import { TranslationContext } from '../TranslationContext';
+
+const translations = {
+  ru: {
+    title: 'Часто задаваемые вопросы',
+    faqs: [
+      {
+        question: 'Какой металлопрокат вы предлагаете?',
+        answer: 'Мы предлагаем широкий ассортимент черного и цветного металлопроката, включая арматуру, листы, трубы, балки и уголки.',
+      },
+      {
+        question: 'Можно ли заказать доставку металлопроката?',
+        answer: 'Да, мы осуществляем доставку по всему Казахстану. Условия доставки зависят от объема заказа и региона.',
+      },
+      {
+        question: 'Как оформить заказ?',
+        answer: 'Вы можете оставить заявку на сайте или связаться с нашими менеджерами по телефону.',
+      },
+      {
+        question: 'Есть ли у вас скидки для оптовых покупателей?',
+        answer: 'Да, у нас предусмотрены гибкие скидки для оптовых заказчиков. Свяжитесь с нами для получения подробной информации.',
+      },
+      {
+        question: 'Как можно оплатить заказ?',
+        answer: 'Мы принимаем оплату наличными, банковским переводом и по безналичному расчету.',
+      },
+    ],
+  },
+  en: {
+    title: 'Жиі қойылатын сұрақтар',
+    faqs: [
+      {
+        question: 'Сіз қандай металлопрокат ұсынасыз?',
+        answer: 'Біз қара және түсті металлопрокаттың кең ассортиментін ұсынамыз, оның ішінде арматура, қаңылтыр, құбырлар, арқалықтар және бұрыштар бар.',
+      },
+      {
+        question: 'Металлопрокатты жеткізуге бола ма?',
+        answer: 'Иә, біз Қазақстан бойынша жеткізу қызметін ұсынамыз. Жеткізу шарттары тапсырыс көлеміне және аймаққа байланысты.',
+      },
+      {
+        question: 'Тапсырысты қалай рәсімдеуге болады?',
+        answer: 'Сіз біздің сайтта өтініш қалдыра аласыз немесе телефон арқылы менеджерлерімізбен байланыса аласыз.',
+      },
+      {
+        question: 'Көтерме сатып алушыларға жеңілдіктер қарастырылған ба?',
+        answer: 'Иә, бізде көтерме сатып алушылар үшін икемді жеңілдіктер қарастырылған. Толық ақпарат алу үшін бізбен хабарласыңыз.',
+      },
+      {
+        question: 'Төлемді қалай жасауға болады?',
+        answer: 'Біз қолма-қол ақшамен, банктік аударыммен және қолма-қол ақшасыз есеп айырысуды қабылдаймыз.',
+      },
+    ],
+  },
+
+};
 
 function FAQSection() {
-    // Массив вопросов и ответов
-    const faqs = [
-        {
-            question: "Сколько времени занимает заправка картриджа?",
-            answer: "Время заправки картриджа обычно занимает от 15 до 30 минут, в зависимости от модели картриджа и его состояния.",
-        },
-        {
-            question: "Сколько раз можно заправлять один и тот же картридж?",
-            answer: "Большинство картриджей можно заправлять несколько раз (до 5-7 заправок), но это зависит от их состояния и качества печати.",
-        },
-        {
-            question: "Как узнать, что картридж нужно заправить?",
-            answer: "Признаками необходимости заправки являются тусклый или прерывистый текст, а также наличие белых полос на распечатках.",
-        },
-        {
-            question: "Заправка картриджа ухудшает его качество?",
-            answer: "При правильной заправке картриджа качество печати не должно пострадать. Важно использовать качественный тонер и обратиться к профессионалам.",
-        },
-        {
-            question: "Можно ли заправлять картридж самостоятельно?",
-            answer: "Заправка картриджа требует специальных знаний и оборудования, поэтому рекомендуется доверять эту процедуру специалистам.",
-        },
-    ];
+  const { language } = useContext(TranslationContext);
+  const { title, faqs } = translations[language] || translations.ru;
 
-    return (
-        <div className="container mx-auto py-10 px-4">
-            <h2 className="text-3xl font-bold text-center mb-6">Часто задаваемые вопросы</h2>
-            <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                    <div key={index} className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box">
-                        <input type="checkbox" />
-                        <div className="collapse-title text-lg font-medium">
-                            {faq.question}
-                        </div>
-                        <div className="collapse-content">
-                            <p className="text-gray-600">{faq.answer}</p>
-                        </div>
-                    </div>
-                ))}
+  return (
+    <div className="container mx-auto py-10 px-4">
+      <h2 className="text-3xl font-bold text-gray-700 text-center mb-6">{title}</h2>
+      <div className="space-y-4">
+        {faqs.map((faq, index) => (
+          <div key={index} className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box">
+            <input type="checkbox" />
+            <div className="collapse-title text-lg font-medium">{faq.question}</div>
+            <div className="collapse-content">
+              <p className="text-gray-600">{faq.answer}</p>
             </div>
-        </div>
-    );
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default FAQSection;
