@@ -6,10 +6,18 @@ function ServiceSection() {
     const { polyglot } = useContext(TranslationContext);
     const services = [
         {
+            name: "Труба бесшовная ",
+            image: "https://images.satu.kz/228079628_w640_h640_truba-besshovnaya.jpg", // Путь к изображению
+            description: "Наши трубы обладают высокой прочностью, устойчивы к коррозии и рассчитаны на длительный срок эксплуатации."
+        },
+
+        {
             name: "Арматура ",
             image: "https://rozmet.ru/upload/iblock/23f/6butdp71m6u7w3doeso30xyhzu91prfj.jpg", // Путь к изображению
             description: "Профессиональная заправка и восстановление черно-белых лазерных картриджей для принтеров различных марок."
         },
+
+
         {
             name: "Труба круглая",
             image: "https://rozmet.ru/upload/iblock/446/d2xdjlzrfbr88u1rytw6gxu035wapete.jpg",
