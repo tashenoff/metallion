@@ -31,11 +31,11 @@ function App() {
         <Layout>
           <FloatingPhoneButton />
           <HeroSection />
-          <AboutSection />
           <AdvantagesSection />
           <ServiceSection />
           <PriceListAccess />
           <FAQSection />
+          <AboutSection />
           <ContactForm />
         </Layout>
       </TranslationProvider>
