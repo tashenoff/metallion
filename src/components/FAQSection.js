@@ -60,8 +60,8 @@ function FAQSection() {
   const { title, faqs } = translations[language] || translations.ru;
 
   return (
-    <div className="container mx-auto py-10 px-4">
-      <h2 className="text-3xl font-bold text-gray-700 text-left mb-6">{title}</h2>
+    <div className="container mx-auto py-10 ">
+      <h2 className="text-3xl font-bold text-gray-700 px-4 text-left mb-6">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box">
