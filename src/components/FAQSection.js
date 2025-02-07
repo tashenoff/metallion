@@ -61,7 +61,7 @@ function FAQSection() {
 
   return (
     <div className="container mx-auto py-10 px-4">
-      <h2 className="text-3xl font-bold text-gray-700 text-center mb-6">{title}</h2>
+      <h2 className="text-3xl font-bold text-gray-700 text-left mb-6">{title}</h2>
       <div className="space-y-4">
         {faqs.map((faq, index) => (
           <div key={index} className="collapse collapse-arrow border border-base-200 bg-base-100 rounded-box">

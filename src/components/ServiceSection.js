@@ -94,7 +94,7 @@ function ServiceSection() {
     <div id="services" className="bg-white hero">
       <div className="py-10">
         <div className="container mx-auto">
-          <h2 className="text-3xl text-gray-700 font-bold text-center mb-6">{title}</h2>
+          <h2 className="text-3xl text-gray-700 font-bold text-left mb-6">{title}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {services.map((service, index) => (
               <div key={index} className="card bg-opacity-70 backdrop-blur-md bg-base-200 border-base-100 border shadow-md p-4">
