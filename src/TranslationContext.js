@@ -78,8 +78,8 @@ const translations = {
 export const TranslationContext = createContext();
 
 export const TranslationProvider = ({ children }) => {
-    const [language, setLanguage] = useState('en');
-    const [polyglot, setPolyglot] = useState(new Polyglot({ phrases: translations['en'] }));
+    const [language, setLanguage] = useState('ru');
+    const [polyglot, setPolyglot] = useState(new Polyglot({ phrases: translations['ru'] }));
 
     useEffect(() => {
         setPolyglot(new Polyglot({ phrases: translations[language] }));
