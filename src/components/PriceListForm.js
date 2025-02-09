@@ -72,7 +72,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 {loading ? t.sending : t.button}
             </button>
             {successMessage && (
-                <p className="text-green-500 text-center mt-2">{successMessage}</p>
+                <p className="text-white text-center mt-2">{successMessage}</p>
             )}
         </form>
     );
