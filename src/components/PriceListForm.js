@@ -19,7 +19,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative backdrop-blur-lg bg-white/10">
+        <form onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500  ">
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
                     <span className="text-blue-500 font-bold">{t.sending}</span>
@@ -33,7 +33,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.name}
                 value={form.name}
                 onChange={handleChange}
-                className="w-full p-2 bg-black/50 rounded backdrop-blur-lg"
+                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -44,7 +44,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.phone}
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full p-2   bg-black/50 rounded backdrop-blur-lg"
+                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -54,7 +54,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.email}
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-black/50  backdrop-blur-lg"
+                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -64,11 +64,11 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.company}
                 value={form.company}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-black/50  backdrop-blur-lg"
+                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
-            <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded" disabled={loading}>
+            <button type="submit" className="w-full bg-white font-bold p-2 rounded" disabled={loading}>
                 {loading ? t.sending : t.button}
             </button>
             {successMessage && (
