@@ -19,19 +19,21 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-4 border bg-white rounded space-y-4 flex flex-col justify-end relative">
+        <form onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative backdrop-blur-lg bg-white/10">
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
                     <span className="text-blue-500 font-bold">{t.sending}</span>
                 </div>
             )}
+
+            <h2 className="text-2xl font-bold mb-6 text-white">{t.header}</h2>
             <input
                 type="text"
                 name="name"
                 placeholder={t.placeholders.name}
                 value={form.name}
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2 bg-black/50 rounded backdrop-blur-lg"
                 required
                 disabled={loading}
             />
@@ -42,7 +44,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.phone}
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2   bg-black/50 rounded backdrop-blur-lg"
                 required
                 disabled={loading}
             />
@@ -52,7 +54,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.email}
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2  rounded bg-black/50  backdrop-blur-lg"
                 required
                 disabled={loading}
             />
@@ -62,7 +64,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.company}
                 value={form.company}
                 onChange={handleChange}
-                className="w-full p-2 border rounded"
+                className="w-full p-2  rounded bg-black/50  backdrop-blur-lg"
                 required
                 disabled={loading}
             />

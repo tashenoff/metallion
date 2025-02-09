@@ -12,7 +12,7 @@ function AdvantagesSection() {
             description: polyglot.t("advantages.qualityDescription"),
             icon: faCheckCircle,
         },
-   
+
         {
             text: polyglot.t("advantages.logistics"),
             description: polyglot.t("advantages.logisticsDescription"),
@@ -23,7 +23,7 @@ function AdvantagesSection() {
             description: polyglot.t("advantages.documentationDescription"),
             icon: faFileAlt,
         },
-     
+
         {
             text: polyglot.t("advantages.team"),
             description: polyglot.t("advantages.teamDescription"),
@@ -44,11 +44,15 @@ function AdvantagesSection() {
                     {advantages.map((advantage, index) => (
                         <div
                             key={index}
-                            className="card bg-base-200 shadow-md p-4 flex flex-col items-center text-left"
+                            className="card p-10 relative bg-gray-800 text-white shadow-md  flex flex-col items-center text-left"
                         >
-                            <FontAwesomeIcon icon={advantage.icon} className="text-primary text-3xl mb-3" />
-                            <h3 className="text-lg font-semibold mb-2">{advantage.text}</h3>
-                            <p className="text-sm text-gray-600">{advantage.description}</p>
+                            <div className='bg-success/70 absolute -top-8 backdrop-blur-lg p-8  rounded-full w-5 h-5 flex items-center justify-center mb-3'>
+                                <FontAwesomeIcon icon={advantage.icon} className="text-white text-2xl" />
+                            </div>
+                            <div className='mt-5'>
+                                <h3 className="text-lg text-center font-semibold mb-2">{advantage.text}</h3>
+                                <p className="text-sm text-center text-white">{advantage.description}</p>
+                            </div>
                         </div>
                     ))}
                 </div>

@@ -20,7 +20,7 @@ function Footer() {
     const { copyright } = translations[language] || translations['ru']; // Используем ru по умолчанию
 
     return (
-        <footer className="bg-black text-base-content p-4">
+        <footer className="bg-gray-900 text-base-content p-4">
             {/* <CompanyDetails /> */}
             <div className="container mx-auto flex items-center flex-col text-center">
                 <ScrollArrow
@@ -28,10 +28,13 @@ function Footer() {
                     direction="top"
                     targetId="services"
                 />
-                 <Contact />
+                <div className='w-full py-5 my-5 border-b lg:flex-row flex-col flex lg:justify-between items-center border-white/10'>
+                    <Contact />
+                    <PhoneNumber />
+                </div>
                 <p className="mb-2 text-white">{copyright}</p>
-                <PhoneNumber />
-               
+
+
 
             </div>
         </footer>

@@ -26,7 +26,7 @@ function HeroSection() {
       id="home"
       className="hero relative h-[600px] bg-base-200"
     >
-      <div className="hero-overlay bg-black bg-opacity-80 absolute inset-0"></div>
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-90"></div>
       <div className='container'>
         <div className="hero-content text-start relative z-10">
           <div className="w-full flex items-start justify-center flex-col">
