@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import InputMask from "react-input-mask";
+import confetti from "canvas-confetti";
 
 const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
     const [form, setForm] = useState({
@@ -9,6 +10,8 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
         company: "",
     });
 
+    const formRef = useRef(null); // Реф для получения позиции формы
+
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
@@ -16,10 +19,30 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(form);
+
+        // Получаем координаты формы
+        if (formRef.current) {
+            const { top, left, width, height } = formRef.current.getBoundingClientRect();
+            const centerX = left + width / 2;
+            const centerY = top + height / 2;
+
+            // Запускаем конфетти по центру формы
+            confetti({
+                particleCount: 100,
+                spread: 70,
+                origin: { 
+                    x: centerX / window.innerWidth, 
+                    y: centerY / window.innerHeight 
+                },
+            });
+        }
+
+        // Очистка формы после отправки
+        setForm({ name: "", phone: "", email: "", company: "" });
     };
 
     return (
-        <form onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500  ">
+        <form ref={formRef} onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500">
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
                     <span className="text-blue-500 font-bold">{t.sending}</span>
@@ -33,7 +56,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.name}
                 value={form.name}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
+                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -44,7 +67,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.phone}
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
+                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -54,7 +77,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.email}
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
+                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
@@ -64,7 +87,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
                 placeholder={t.placeholders.company}
                 value={form.company}
                 onChange={handleChange}
-                className="w-full p-2  rounded bg-white/20 focus:bg-white/40 focus:outline-none  placeholder-white placeholder-opacity-80"
+                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
                 required
                 disabled={loading}
             />
