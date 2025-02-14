@@ -15,7 +15,7 @@ function ContactForm() {
                 backgroundPosition: "center",
             }}
         >
-            <div className="hero-overlay bg-gray-900 bg-opacity-80"></div>
+            <div className="hero-overlay bg-blue-900 bg-opacity-80"></div>
             <div className='container mx-auto '>
                 <div className='py-10 flex items-center justify-center flex-col '>
                     <div className="flex items-center justify-center mb-4">

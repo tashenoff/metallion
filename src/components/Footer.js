@@ -20,7 +20,7 @@ function Footer() {
     const { copyright } = translations[language] || translations['ru']; // Используем ru по умолчанию
 
     return (
-        <footer className="bg-gray-900 text-base-content p-4">
+        <footer className="bg-blue-800 text-base-content p-4">
             {/* <CompanyDetails /> */}
             <div className="container mx-auto flex items-center flex-col text-center">
                 <ScrollArrow

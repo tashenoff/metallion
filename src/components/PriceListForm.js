@@ -32,7 +32,7 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
         <form
             ref={formRef}
             onSubmit={handleSubmit}
-            className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500"
+            className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-blue-600"
         >
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">

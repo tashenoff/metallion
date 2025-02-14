@@ -18,7 +18,7 @@ function HeroSection() {
   return (
     <div
       style={{
-        backgroundImage: `url('/images/call-to-action.jpg')`,
+        backgroundImage: `url('/images/glavnaya_2l_1_min_1_min.jpg')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
@@ -26,7 +26,7 @@ function HeroSection() {
       id="home"
       className="hero relative h-[600px] bg-base-200"
     >
-        <div className="absolute inset-0 bg-gray-900 bg-opacity-90"></div>
+        <div className="absolute inset-0 bg-gray-900 bg-opacity-20"></div>
       <div className='container'>
         <div className="hero-content text-start relative z-10">
           <div className="w-full flex items-start justify-center flex-col">

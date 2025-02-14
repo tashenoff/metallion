@@ -75,13 +75,13 @@ const PriceListAccess = () => {
         <section id="price-form" 
             className="h-full my-10 py-10 lg:h-[500px] flex items-center justify-center relative"
             style={{ 
-                backgroundImage: "url('https://mc-rus.ru/assets/images/demos/demo-14/slider/slide-1.jpg')", 
+                backgroundImage: "url('/images/bg.webp')", 
                 backgroundSize: "cover", 
                 backgroundPosition: "center" 
             }}
         >
             {/* Маска поверх фона */}
-            <div className="absolute inset-0 bg-gray-900 bg-opacity-90"></div>
+            <div className="absolute inset-0 bg-gray-900 bg-opacity-20"></div>
 
             <div className="container relative z-10">
                 <div className="grid lg:grid-cols-2 gap-4">

@@ -44,7 +44,7 @@ function AdvantagesSection() {
                     {advantages.map((advantage, index) => (
                         <div
                             key={index}
-                            className="card p-10 relative bg-gray-800 text-white shadow-md  flex flex-col items-center text-left"
+                            className="card p-10 relative bg-blue-500 text-white shadow-md  flex flex-col items-center text-left"
                         >
                             <div className='bg-success/70 absolute -top-8 backdrop-blur-lg p-8  rounded-full w-5 h-5 flex items-center justify-center mb-3'>
                                 <FontAwesomeIcon icon={advantage.icon} className="text-white text-2xl" />
