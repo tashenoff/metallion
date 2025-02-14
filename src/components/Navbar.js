@@ -1,72 +1,71 @@
 // src/components/Navbar.js
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import PhoneNumber from './PhoneNumber';
 import LanguageSwitcher from './LanguageSwitcher';
 import { TranslationContext } from '../TranslationContext';
+import Menu from './Menu';
+import { useScroll } from '../hooks/useScroll';
 
 function Navbar() {
-    const [isScrolled, setIsScrolled] = useState(false);
     const { polyglot } = useContext(TranslationContext);
+    const isScrolled = useScroll();
 
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 50);
-        };
-
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    // Конфигурация меню
+    const menuItems = [
+        { href: "#services", label: polyglot.t('services') },
+        { href: "#adv", label: polyglot.t('advantages_menu') },
+        { href: "#footer", label: polyglot.t('contacts_menu') },
+    ];
 
     return (
-        <div className={`navbar ${isScrolled ? 'bg-opacity-70 backdrop-blur-md shadow-md bg-gray-900' : 'bg-transparent'} fixed border-b border-white border-opacity-15 text-white top-0 w-full z-50 transition-all duration-300`}>
+        <nav className={`navbar ${isScrolled ? 'bg-opacity-70 backdrop-blur-md shadow-md bg-gray-900' : 'bg-transparent'} fixed border-b border-white border-opacity-15 text-white top-0 w-full z-50 transition-all duration-300`}>
             <div className="container mx-auto">
                 <div className="navbar-start flex items-center">
+                    {/* Мобильное меню */}
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <button tabIndex={0} className="btn btn-ghost lg:hidden">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 className="h-5 w-5"
                                 fill="none"
                                 viewBox="0 0 24 24"
-                                stroke="currentColor">
+                                stroke="currentColor"
+                            >
                                 <path
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
                                     strokeWidth="2"
-                                    d="M4 6h16M4 12h8m-8 6h16" />
+                                    d="M4 6h16M4 12h8m-8 6h16"
+                                />
                             </svg>
-                        </div>
-                        <ul
-                            tabIndex={0}
-                            className="menu menu-sm dropdown-content bg-green-800 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                            <li><a href="#services">{polyglot.t('services')}</a></li>
-                            <li><a href="#adv">{polyglot.t('advantages_menu')}</a></li>
-                            <li><a href="#footer">{polyglot.t('contacts_menu')}</a></li>
-                        </ul>
+                        </button>
+                        <Menu items={menuItems} className="menu-sm dropdown-content bg-green-800 rounded-box z-[1] mt-3 w-52 p-2 shadow" />
                     </div>
-                    <a href="/" className="">
-                        <img className='w-[144px] lg:block hidden' src='logo.svg' />
+
+                    {/* Логотип */}
+                    <a href="/" className="hidden lg:block">
+                        <img className="w-[144px]" src="logo.svg" alt="Logo" />
                     </a>
                 </div>
-                <div className="navbar-center hidden lg:flex justify-start">
-                    <ul className="menu menu-horizontal px-1">
-                        <li><a href="#services">{polyglot.t('services')}</a></li>
-                        <li><a href="#adv">{polyglot.t('advantages_menu')}</a></li>
-                        <li><a href="#footer">{polyglot.t('contacts_menu')}</a></li>
-                    </ul>
-                </div>
-                <div className='grid grid-cols-2'>
-                    <div className="navbar-end">
-                        <div className='flex items-center justify-start w-full'>
-                            <PhoneNumber />
 
+                {/* Десктопное меню */}
+                <div className="navbar-center hidden lg:flex justify-start">
+                    <Menu items={menuItems} className="menu-horizontal px-1" />
+                </div>
+
+                {/* Контакты и языковой переключатель */}
+                <div className="grid grid-cols-2">
+                    <div className="navbar-end">
+                        <div className="flex items-center justify-start w-full">
+                            <PhoneNumber />
                         </div>
-                        
                     </div>
-                    <div className='flex items-center justify-end'>  <LanguageSwitcher /></div>
+                    <div className="flex items-center justify-end">
+                        <LanguageSwitcher />
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
     );
 }
 

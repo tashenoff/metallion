@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
-import InputMask from "react-input-mask";
-import confetti from "canvas-confetti";
+import { triggerConfetti } from "../utils/confetti";
+import InputField from "../components/InputField";
 
 const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
     const [form, setForm] = useState({
@@ -10,39 +10,30 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
         company: "",
     });
 
-    const formRef = useRef(null); // Реф для получения позиции формы
+    const formRef = useRef(null);
 
     const handleChange = (e) => {
-        setForm({ ...form, [e.target.name]: e.target.value });
+        const { name, value } = e.target;
+        setForm((prev) => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         onSubmit(form);
 
-        // Получаем координаты формы
-        if (formRef.current) {
-            const { top, left, width, height } = formRef.current.getBoundingClientRect();
-            const centerX = left + width / 2;
-            const centerY = top + height / 2;
+        // Запуск конфетти
+        triggerConfetti(formRef.current);
 
-            // Запускаем конфетти по центру формы
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { 
-                    x: centerX / window.innerWidth, 
-                    y: centerY / window.innerHeight 
-                },
-            });
-        }
-
-        // Очистка формы после отправки
+        // Очистка формы
         setForm({ name: "", phone: "", email: "", company: "" });
     };
 
     return (
-        <form ref={formRef} onSubmit={handleSubmit} className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500">
+        <form
+            ref={formRef}
+            onSubmit={handleSubmit}
+            className="p-8 rounded space-y-4 flex flex-col justify-end relative bg-gradient-to-br from-success/80 backdrop-blur-lg to-green-500"
+        >
             {loading && (
                 <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75">
                     <span className="text-blue-500 font-bold">{t.sending}</span>
@@ -50,50 +41,53 @@ const PriceListForm = ({ t, onSubmit, loading, successMessage }) => {
             )}
 
             <h2 className="text-2xl font-bold mb-6 text-white">{t.header}</h2>
-            <input
+
+            <InputField
                 type="text"
                 name="name"
                 placeholder={t.placeholders.name}
                 value={form.name}
                 onChange={handleChange}
-                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
-                required
                 disabled={loading}
+                required
             />
-            <InputMask
-                mask="+7 (999) 999-99-99"
+            <InputField
                 type="tel"
+                mask="+7 (999) 999-99-99"
                 name="phone"
                 placeholder={t.placeholders.phone}
                 value={form.phone}
                 onChange={handleChange}
-                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
-                required
                 disabled={loading}
+                required
             />
-            <input
+            <InputField
                 type="email"
                 name="email"
                 placeholder={t.placeholders.email}
                 value={form.email}
                 onChange={handleChange}
-                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
-                required
                 disabled={loading}
+                required
             />
-            <input
+            <InputField
                 type="text"
                 name="company"
                 placeholder={t.placeholders.company}
                 value={form.company}
                 onChange={handleChange}
-                className="w-full p-2 rounded bg-white/20 focus:bg-white/40 focus:outline-none placeholder-white placeholder-opacity-80"
-                required
                 disabled={loading}
+                required
             />
-            <button type="submit" className="w-full bg-white font-bold p-2 rounded" disabled={loading}>
+
+            <button
+                type="submit"
+                className="w-full bg-white font-bold p-2 rounded"
+                disabled={loading}
+            >
                 {loading ? t.sending : t.button}
             </button>
+
             {successMessage && (
                 <p className="text-white text-center mt-2">{successMessage}</p>
             )}
